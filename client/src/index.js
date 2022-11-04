@@ -25,6 +25,20 @@ class AppSystem {
 
         await this.Managers.Socket.waitForConnection()
 
+        document.body.querySelector( `page#liveboard form#board` )
+            .addEventListener( 'submit', ( e ) => {
+
+                e.preventDefault()
+
+                this.Managers.Socket.Socket.emit( 
+                    '[server] message room',
+                    e.target.querySelector( 'input#input' ).value
+                )
+
+                e.target.querySelector( 'input#input' ).value = ''
+
+            } )
+
     }
 
 }

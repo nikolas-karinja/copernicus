@@ -13,6 +13,7 @@
     "socket.io-client": "^4.5.3"
   },
   "devDependencies": {
+    "@nikolas.karinja/app-utils": "^0.2.2",
     "@nikolas.karinja/ecs": "^0.1.1",
     "buffer": "^6.0.3",
     "parcel": "^2.7.0",

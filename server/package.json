@@ -10,7 +10,9 @@
   "author": "Nikolas Karinja",
   "license": "ISC",
   "devDependencies": {
+    "@nikolas.karinja/app-utils": "^0.2.1",
     "express": "^4.18.2",
-    "socket.io": "^4.5.3"
+    "socket.io": "^4.5.3",
+    "unique-username-generator": "^1.1.1"
   }
 }
