@@ -40,11 +40,13 @@ IO.on( 'connection', ( socket ) => {
 
         Managers.Rooms.create( Managers.Users.get( socket.id ), 'Worldwide' )
 
+    } else {
+
+        // make socket automatically join worldwide chat room.
+
+        Managers.Rooms.joinRoom( Managers.Users.get( socket.id ), 'Worldwide' )
+
     }
-
-    // make socket automatically join worldwide chat room.
-
-    Managers.Rooms.joinRoom( Managers.Users.get( socket.id ), 'Worldwide' )
 
     // send message to client about connection data
 
@@ -60,6 +62,26 @@ IO.on( 'connection', ( socket ) => {
             ROOM.postMessage( Managers.Users.get( socket.id ), content )
 
         }
+
+    } )
+
+    // gets all info from rooms
+
+    socket.on( '[server] get all rooms data', () => {
+
+        const rooms = Managers.Rooms.getDataAll()
+
+        socket.emit( '[client] get all rooms data', rooms )
+
+    } )
+
+    // handle joinging a room
+
+    socket.on( '[server] join room', ( name ) => {
+
+        Managers.Rooms.joinRoom( Managers.Users.get( socket.id ), name )
+
+        const ROOM = Managers.Rooms.get( name )
 
     } )
 

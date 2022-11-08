@@ -25,13 +25,20 @@
         </topper>
 
         <page id='liveboard'>
+            <div id='room-options'>
+                <button title='Create and open your own room'>Create Room</button>
+                <button title='Join a currently open chat room by name'>Join Room</button>
+                <button id='browse-rooms' title='Browse the currently open chat rooms'>Browse Rooms</button>
+            </div>
+
+            <div id='room-name' title='Name of the room'>Room Name</div>
             <div id='board'></div>
             
             <form id='board' autocomplete="off">
                 <input id='input' placeholder='Type something here...'>
             </form>
 
-            <div id='send'></div>
+            <div id='send' title='Send message (ENTER)'></div>
 
             <div id='info'>
                 <div id='label'>Users Active</div>

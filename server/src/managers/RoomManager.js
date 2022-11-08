@@ -22,6 +22,20 @@ class RoomManager {
 
     }
 
+    getDataAll () {
+
+        const rooms = []
+
+        for ( let r of this.Rooms.array ) {
+
+            rooms.push( r.generateDataString() )
+
+        }
+
+        return rooms
+
+    }
+
     joinRoom ( user, name ) {
 
         const ROOM = this.Rooms.get( name ).byName()

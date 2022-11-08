@@ -134,14 +134,69 @@ page {
 
     &#liveboard {
 
-        & div#board {
+        & div#room-options {
 
             position: absolute;
             left: 16px;
             top: 16px;
 
+            width: calc( 100% - 32px );
+            height: 32px;
+
+            display: flex;
+            align-items: flex-start;
+            flex-direction: row;
+            justify-content: flex-start;
+
+            & button {
+
+                height: 32px;
+
+                margin-right: 8px;
+
+                background-color: #202020;
+                border: none;
+                border-radius: 8px;
+                color: white;
+                font-family: 'Roboto';
+                font-size: 16px;
+                line-height: 32px;
+                padding: 0px 8px 0px 8px;
+                text-align: center;
+                transition: 0.15s all;
+
+                cursor: pointer;
+
+                &:hover {
+
+                    background-color: #424242;
+
+                }
+
+            }
+
+        }
+
+        & div#room-name {
+
+            position: absolute;
+            right: calc( $liveboard-info-width + 16px );
+            top: 16px;
+
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+
+        }
+
+        & div#board {
+
+            position: absolute;
+            left: 16px;
+            top: 56px;
+
             width: calc( 100% - 64px - $liveboard-info-width );
-            height: calc( 100% - 64px - 32px - 8px );
+            height: calc( 100% - 64px - 32px - 8px - 40px );
 
             align-items: flex-start;
             background-color: rgba( black, 0.25 );

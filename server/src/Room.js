@@ -27,21 +27,39 @@ class Room {
 
     }
 
-    async join ( user ) {
+    generateData () {
 
-        console.log( this.storedChats )
-
-        await user.Socket.join( this.name )
-
-        user.Socket.emit( '[client] add stored chats to board', this.storedChats )
-
-        this.Users.add( user )
+        return {
+            name: this.name,
+            uuid: this.uuid,
+            usersActive: this.Users.array.length,
+        }
 
     }
 
-    leave ( user ) {
+    generateDataString () {
 
-        user.Socket.leave( this.name )
+        return JSON.stringify( this.generateData() )
+
+    }
+
+    async join ( user ) {
+
+        if ( !this.Users.check( user.uuid ).byUUID() ) {
+
+            await user.Socket.join( this.name )
+
+            this.Users.add( user )
+
+            user.Socket.emit( '[client] joined room', this.generateDataString(), this.storedChats )
+
+        }
+
+    }
+
+    async leave ( user ) {
+
+        await user.Socket.leave( this.name )
 
         this.Users.remove( user.uuid ).byUUID()
 

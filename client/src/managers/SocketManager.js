@@ -22,7 +22,12 @@ class SocketManager extends Manager {
 
         } )
 
-        this.Socket.on( '[client] add stored chats to board', ( storedChats ) => {
+        this.Socket.on( '[client] joined room', ( roomData, storedChats ) => {
+
+            roomData = JSON.parse( roomData )
+
+            document.body.querySelector( 'page#liveboard div#room-name' )
+                .innerHTML = roomData.name
 
             for ( let i = 0; i < storedChats.length; i++ ) {
 
@@ -49,6 +54,20 @@ class SocketManager extends Manager {
 
             this.postStamp( 'Text below was created during your surrent session in this room.' )
             this.postTimeStamp( Utils.Time.generateData() )
+
+        } )
+
+        this.Socket.on( '[client] get all rooms data', ( rooms ) => {
+
+            const roomsData = []
+
+            for ( let r of rooms ) {
+
+                roomsData.push( JSON.parse( r ) )
+
+            }
+
+            console.log( roomsData )
 
         } )
 

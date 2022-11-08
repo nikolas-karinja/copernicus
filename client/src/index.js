@@ -25,6 +25,13 @@ class AppSystem {
 
         await this.Managers.Socket.waitForConnection()
 
+        document.body.querySelector( 'page#liveboard div#room-options button#browse-rooms' )
+            .addEventListener( 'click', () => {
+
+                this.Managers.Socket.Socket.emit( '[server] get all rooms data' )
+
+            } )
+
         document.body.querySelector( `page#liveboard form#board` )
             .addEventListener( 'submit', ( e ) => {
 
